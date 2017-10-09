@@ -51,7 +51,7 @@ GuestBook(){
 	}
 	if(e.getSource() == b2){
 		for (int i = 0; i < guestbook.size(); i++) {
-			JOptionPane.showMessageDialog(null, "Guest #1: " + guestbook.get(i) + "Guest #2: " + guestbook.get(i+1) + "Guest #3: " + guestbook.get(i+2) + "Guest #4: " + guestbook.get(i+3)+"Guest #5: " + guestbook.get(i+4));
+			JOptionPane.showMessageDialog(null, "Guest #1: " + guestbook.get(i) + "Guest #2: " + guestbook.get(i+1) + " Guest #3: " + guestbook.get(i+2) + " Guest #4: " + guestbook.get(i+3)+" Guest #5: " + guestbook.get(i+4));
 		}
 	}
 	}
