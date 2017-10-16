@@ -1,7 +1,87 @@
 package IntroToHashMaps;
 
-public class LogSearch {
-  /* 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class LogSearch implements ActionListener{
+	JFrame f = new JFrame();
+	JPanel p = new JPanel();
+	JButton add = new JButton();
+	JButton search = new JButton();
+	JButton view = new JButton();
+	JButton remove = new JButton();
+	HashMap<Integer, String> list = new HashMap();
+	String Id;
+	int ID;
+	String is = "list = ";
+	String name;
+	public static void main(String[] args) {
+		LogSearch lg = new LogSearch();
+	}
+ 
+	LogSearch(){
+		f.add(p);
+		p.add(add);
+		p.add(search);
+		p.add(view);
+		p.add(remove);
+		f.setVisible(true);
+		add.addActionListener(this);
+		search.addActionListener(this);
+		view.addActionListener(this);
+		remove.addActionListener(this);
+		add.setText("Add entry");
+		search.setText("Search by ID");
+		view.setText("ViewList");
+		remove.setText("Remove Entry");
+		f.pack();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == add) {
+			Id = JOptionPane.showInputDialog("Enter an ID number");
+			ID = Integer.parseInt(Id);
+			name = JOptionPane.showInputDialog("Enter a name");
+			list.put(ID, name);
+		}
+		else if(e.getSource() == search) {
+			String st = JOptionPane.showInputDialog("Enter an ID number");
+			int other = Integer.parseInt(st);
+			if(list.containsKey(other) == true) {
+				JOptionPane.showMessageDialog(null, list.get(other));
+			}
+			else if(list.containsKey(other) == false) {
+				JOptionPane.showMessageDialog(null, "This ID does not exist");
+			}
+		}
+		else if(e.getSource() == view) {
+			String s = "";
+			for (int i: list.keySet()) {
+						s += " ID: " + i + " Name: " + list.get(i)+ "\n";
+					}
+					JOptionPane.showMessageDialog(null, s);
+		}
+		else if (e.getSource() == remove) {
+			String st = JOptionPane.showInputDialog("Enter an ID number");
+			int other = Integer.parseInt(st);
+			if(list.containsKey(other) == true) {
+				list.remove(other);
+			}
+			else if(list.containsKey(other) == false) {
+				JOptionPane.showMessageDialog(null, "This ID does not exist");
+			}
+		}
+	}
+}
+/* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
 	 * Button 1: Add Entry
@@ -28,4 +108,3 @@ public class LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
-}
